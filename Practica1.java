@@ -87,8 +87,8 @@ public class Practica1 {
     	herida[0] = new Herida("Hematoma", 5);
     	herida[1] = new Herida(null, -2);
     	Herida herida2[] = new Herida[5];
-    	herida[0] = new Herida("Derrame cerebral", 8);
-    	herida[1] = new Herida(null, -1);
+    	herida2[0] = new Herida("Derrame cerebral", 8);
+    	herida2[1] = new Herida(null, -1);
     	for (int i = 0; i<herida.length; i++){
     		System.out.println("\n-ITEM "+i+"-");
 	    	System.out.println("Lesion original: "+herida[i].getGravedad());
@@ -113,6 +113,7 @@ public class Practica1 {
     		System.out.println(herido[i].agregaLesion(null));
     		if (herido[i].getLesiones() != null) System.out.println("Tam: "+herido[i].getLesiones().length);
     		herido[i].empeora(0);
+    		if (herido[i].getLesiones() != null) System.out.println("Tam: "+herido[i].getLesiones().length);
     		herido[i].empeora(2);
     		if (herido[i].getLesiones() != null) System.out.println("Tam: "+herido[i].getLesiones().length);
     		System.out.println("Gravedad: "+herido[i].gravedad());

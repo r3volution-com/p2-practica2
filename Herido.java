@@ -13,19 +13,18 @@ public class Herido extends Paciente{
 		int presente = -1;
 		if (lesiones != null && l != null){
 			for (int i =0; i < lesiones.length && presente == -1; i++){
-				//if (lesiones[i] != null)System.out.println(l.lesion+" "+lesiones[i].lesion);
 				if (lesiones[i] != null){
 					if (lesiones[i].getLesion() != null && l.getLesion() != null){
 						 if(lesiones[i].getLesion().compareTo(l.getLesion()) == 0) presente = i;
-					} else {
+					} /*else {
 						if (lesiones[i].getGravedad() == l.getGravedad()) presente = i;
-					}
+					}*/
 				}
 			}
 			if (presente != -1) {
 				if(lesiones[presente].agrava()){
 					return 0;
-				} else return -2;
+				} else return -1;
 			} else {
 				for (int i =0; i < lesiones.length; i++){
 					if (lesiones[i] == null){
@@ -35,7 +34,7 @@ public class Herido extends Paciente{
 				}
 				return -1;
 			}
-		} return -2;
+		} return -1;
 	}
 	public void empeora (int i) {
 		Herida[] alt;
@@ -88,7 +87,6 @@ public class Herido extends Paciente{
 		if (lesiones != null && s != null){
 			for (int i = 0; i<lesiones.length && pos < 0;i++){
 				if (lesiones[i] != null) {
-					//System.out.println(lesiones[i].getLesion()+" "+s);
 					if (lesiones[i].getLesion() != null && lesiones[i].getLesion().compareTo(s.toLowerCase())==0) pos = i;
 				}
 			}
