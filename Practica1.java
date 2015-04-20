@@ -82,7 +82,7 @@ public class Practica1 {
         System.out.println(clinica.camasDisponibles());
         System.out.println(clinica.numeroHabitaciones());*/
 
-        System.out.println("--HERIDA-- \n");
+        System.out.println("--HERIDA-- \n"); 
     	Herida herida[] = new Herida[2];
     	herida[0] = new Herida("Hematoma", 5);
     	herida[1] = new Herida(null, -2);
