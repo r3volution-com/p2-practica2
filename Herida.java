@@ -1,9 +1,10 @@
 
 public class Herida {
-	String lesion;
-	int gravedad;
+	private String lesion;
+	private int gravedad;
 	public Herida(String nombre, int gravedad) {
 		if (gravedad < 1 || gravedad > 9) gravedad = 3;
+		if (nombre != null) nombre = nombre.toLowerCase();
 		lesion = nombre;
 		this.gravedad = gravedad;
 	}
