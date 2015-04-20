@@ -4,7 +4,7 @@ public class Herida {
 	private int gravedad;
 	public Herida(String nombre, int gravedad) {
 		if (gravedad < 1 || gravedad > 9) gravedad = 3;
-		if (nombre != null) nombre = nombre.toLowerCase();
+		//if (nombre != null) nombre = nombre.toLowerCase();
 		lesion = nombre;
 		this.gravedad = gravedad;
 	}

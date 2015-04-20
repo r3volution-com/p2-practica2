@@ -15,7 +15,7 @@ public class Herido extends Paciente{
 			for (int i =0; i < lesiones.length && presente == -1; i++){
 				if (lesiones[i] != null){
 					if (lesiones[i].getLesion() != null && l.getLesion() != null){
-						 if(lesiones[i].getLesion().compareTo(l.getLesion()) == 0) presente = i;
+						 if(lesiones[i].getLesion().equalsIgnoreCase(l.getLesion())) presente = i;
 					} /*else {
 						if (lesiones[i].getGravedad() == l.getGravedad()) presente = i;
 					}*/
@@ -89,7 +89,7 @@ public class Herido extends Paciente{
 		if (lesiones != null && s != null){
 			for (int i = 0; i<lesiones.length && pos < 0;i++){
 				if (lesiones[i] != null) {
-					if (lesiones[i].getLesion() != null && lesiones[i].getLesion().compareTo(s.toLowerCase())==0) pos = i;
+					if (lesiones[i].getLesion() != null && lesiones[i].getLesion().equalsIgnoreCase(s)) pos = i;
 				}
 			}
 			if (pos >= 0) {
@@ -100,7 +100,7 @@ public class Herido extends Paciente{
 			} else {
 				String sintomas[] = getSintomas();
 				for (int i = 0; i<sintomas.length;i++){
-					if (sintomas[i] != null && sintomas[i].compareTo(s.toLowerCase()) == 0) return sintomas[i];
+					if (sintomas[i] != null && sintomas[i].equalsIgnoreCase(s)) return sintomas[i];
 				}
 				return "";
 			}
