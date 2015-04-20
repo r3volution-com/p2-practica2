@@ -7,7 +7,7 @@ public class Hospital extends Clinica {
 		if (nBoxes <= 0) nBoxes = 2;
 		if (nPlazas <= 0) nPlazas = 2;
 	}
-	public boolean ingreso (Paciente p){
+	/*public boolean ingreso (Paciente p){
 		
 	}
 	public boolean ingresoUrgente(Herido p){
@@ -36,5 +36,5 @@ public class Hospital extends Clinica {
 	}
 	public double mediaGeometrica(){
 		
-	}
+	}*/
 }

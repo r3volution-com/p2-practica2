@@ -124,6 +124,33 @@ public class Practica1 {
     		System.out.println("Cura: "+herido[i].cura(null)); //Revisar
     		System.out.println(herido[i].altaVoluntaria());
     	}
+    	System.out.println("\n --Box-- \n");
+    	Box box[] = new Box[3];
+    	box[0] = new Box(0, 1);
+    	box[1] = new Box(1, 0);
+    	box[2] = new Box(2, -1);
+    	for (int i = 0; i<box.length; i++){
+    		System.out.println("\n-ITEM "+i+"-");
+    		System.out.println("Disponible: "+box[i].disponible());
+    		System.out.println("Plazas: "+box[i].plazas());
+    		System.out.println("Ingreso "+i+": "+box[i].ingreso(herido[0]));
+    		System.out.println("Ingreso "+i+": "+box[i].ingreso(herido[1]));
+    		System.out.println("Ingreso "+i+": "+box[i].ingreso(null));
+    		System.out.println("Esta Ingreso "+i+": "+box[i].estaIngresado(herido[0]));
+    		System.out.println("Esta Ingreso "+i+": "+box[i].estaIngresado(herido[1]));
+    		System.out.println("Esta Ingreso "+i+": "+box[i].estaIngresado(null));
+    		if (box[i].visita(0) != null) System.out.println("Puedes visitarlo");
+    		else System.out.println("No puedes visitarlo");
+    		if (box[i].visita(1) != null) System.out.println("Puedes visitarlo");
+    		else System.out.println("No puedes visitarlo");
+    		System.out.println(box[i].alta(herido[0]));
+    		System.out.println(box[i].alta(herido[1]));
+    		System.out.println(box[i].alta(null));
+    		System.out.println("Esta Ingreso "+i+": "+box[i].estaIngresado(herido[0]));
+    		System.out.println("Esta Ingreso "+i+": "+box[i].estaIngresado(herido[1]));
+    		System.out.println("Esta Ingreso "+i+": "+box[i].estaIngresado(null));
+    	}
+    	
     }
     
 }
