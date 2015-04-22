@@ -6,7 +6,11 @@ public class Herido extends Paciente{
 		super(nSintomas);
 		if (nombre != null && lesiones != null){
 			this.nombre = nombre;
-			this.lesiones = lesiones;
+			this.lesiones = new Herida[lesiones.length];
+			for (int i=0;i<lesiones.length;i++){
+				this.lesiones[i]=lesiones[i];
+			}
+			//this.lesiones = lesiones;
 		}
 	}
 	public int agregaLesion(Herida l){
@@ -14,11 +18,13 @@ public class Herido extends Paciente{
 		if (lesiones != null && l != null){
 			for (int i =0; i < lesiones.length && presente == -1; i++){
 				if (lesiones[i] != null){
-					if (lesiones[i].getLesion() != null && l.getLesion() != null){
-						 if(lesiones[i].getLesion().equalsIgnoreCase(l.getLesion())) presente = i;
-					} /*else {
-						if (lesiones[i].getGravedad() == l.getGravedad()) presente = i;
-					}*/
+					//System.out.println(lesiones[i].getLesion());
+					//System.out.println(l.getLesion());
+					if (l.getLesion() != null){
+						 if(lesiones[i].getLesion() != null && lesiones[i].getLesion().equalsIgnoreCase(l.getLesion())) presente = i;
+					} else {
+						/*if (lesiones[i].getGravedad() == l.getGravedad()) */presente = i;
+					}
 				}
 			}
 			if (presente != -1) {
@@ -73,7 +79,7 @@ public class Herido extends Paciente{
 		} else return 0;
 	}
 	public boolean paseo(int r){
-		int suma = 0, media = 0;
+		double suma = 0, media = 0;
 		if (lesiones != null && estaIngresado()){ //Esta ingresado en boxes?
 			for (int i = 0; i<lesiones.length;i++){
 				if (lesiones[i] != null && lesiones[i].getLesion()!= null) suma += lesiones[i].getLesion().length();
@@ -98,15 +104,21 @@ public class Herido extends Paciente{
 				} else lesiones[pos] = null;
 				return s;
 			} else {
-				String sintomas[] = getSintomas();
-				for (int i = 0; i<sintomas.length;i++){
-					if (sintomas[i] != null && sintomas[i].equalsIgnoreCase(s)) return sintomas[i];
+				if (padeceSintoma(s)) {
+					return cura(s);
 				}
+				/*String sintomas[] = getSintomas();
+				for (int i = 0; i<sintomas.length;i++){
+					if (sintomas[i] != null && sintomas[i].equalsIgnoreCase(s)) {
+						cura(sintomas[i]);
+						return sintomas[i];
+					}
+				}*/
 				return "";
 			}
 		} else return "";
 	}
-	private static void invertArray(char a[],int n){ 
+	private static void invertirArray(char a[],int n){ 
 		int j=n-1,i; 
 		char aux; 
 		for(i=0;i<=(n-1)/2;i++){ 
@@ -116,7 +128,7 @@ public class Herido extends Paciente{
 			j--; 
 		} 
 	} 
-	private char[] convertir_base_3(int terna) {
+	private char[] convertirABase3(int terna) {
 		int c=0,act=0; 
 		char dec[]; 
 		dec=new char[100]; 
@@ -131,30 +143,35 @@ public class Herido extends Paciente{
 			c++; 
 		}while(terna>0); 
 		dec[c]=0; 
-		invertArray(dec,c);
+		invertirArray(dec,c);
 		return dec;
 	} 
 	public boolean altaVoluntaria(){
-		int suma = 0, cont = 0;
+		int suma = 0, cont = 0, cont2=0;
 		char[] ternario;
+		boolean todonull = true;
 		if (lesiones != null) {
-			if (lesiones.length == 0) {
+			for (int i=0;i<lesiones.length;i++) {
+				if (lesiones[i] != null) todonull = false;
+			}
+			if (todonull== true) {
 				//Hospital.alta?
 				return true;
-			} else if (lesiones.length > 0) {
+			} else {
 				for (int i = 0; i<lesiones.length;i++){
 					if (lesiones[i] != null) suma += lesiones[i].getGravedad();
 				}
-				ternario = convertir_base_3(suma);
+				ternario = convertirABase3(suma);
 				for (int i = 0; i<ternario.length;i++){
 					if (ternario[i] == 0 || ternario[i] == 1) cont++;
+					else if (ternario[i] == 2) cont2++;
 				}
-				if (cont > 2){
+				if (cont > cont2){
 					//Alta en hospital
 					//Actualizar datos? (Creo que se puede usar altaMedica)
 					return true;
 				} else return false;
-			} else return false;
+			}
 		} else return false;
 	}
 	public void altaMedica(Hospital h){

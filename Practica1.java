@@ -12,26 +12,29 @@
  * @author mga101
  */
 public class Practica1 {
-
+	public static void bleh(Herida[] heridas){
+		//String[] pepe = new String[heridas.length];
+		for (int i = 0; i < heridas.length; i++) if (heridas[i] != null) System.out.println(heridas[i].getLesion());
+		//return pepe;
+	}
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*Paciente paciente = new Paciente(3);
+        Paciente paciente = new Paciente(3);
         Paciente paciente2 = new Paciente(3);
         Paciente paciente3 = new Paciente(3);
 
-        Habitacion habitaciones = new Habitacion(3, 3);
+        Habitacion habitaciones = new Habitacion(0,0);
         
 
         System.out.println("Pacientes\n");
-        
         if (!paciente.agregaSintoma("Fiebre")) System.out.println("Fail fiebre");
-        System.out.println(Arrays.toString(paciente.getSintomas()));
+        //System.out.println(Arrays.toString(paciente.getSintomas()));
         if (!paciente.agregaSintoma("Vomitos")) System.out.println("Fail vomitos");
-        System.out.println(Arrays.toString(paciente.getSintomas()));
+        //System.out.println(Arrays.toString(paciente.getSintomas()));
         if (!paciente.agregaSintoma("Diarrea")) System.out.println("Fail diarrea");
-        System.out.println(Arrays.toString(paciente.getSintomas())+"\n");
+        //System.out.println(Arrays.toString(paciente.getSintomas())+"\n");
         
         System.out.println(paciente.estimaGravedad()+"\n");
         
@@ -39,12 +42,11 @@ public class Practica1 {
         else System.out.println("No padece fiebre");
         if (paciente.padeceSintoma("Hemorragia")) System.out.println("Padece hemorragia\n");
         else System.out.println("No padece hemorragia\n");
-        
         System.out.println(paciente.cura("Fiebre")+" borrado");
-        System.out.println(Arrays.toString(paciente.getSintomas())+"\n");
+        //System.out.println(Arrays.toString(paciente.getSintomas())+"\n");
         
         System.out.println("Habitaciones\n");
-        
+
         System.out.println(habitaciones.ingreso(paciente));
         System.out.println(habitaciones.ingreso(paciente2)+"\n");
 
@@ -56,20 +58,19 @@ public class Practica1 {
         
         System.out.println(habitaciones.alta(paciente));
         System.out.println(habitaciones.alta(paciente3)+"\n");
-        
+
         Datos dato2 = habitaciones.consulta(paciente);
         if (dato2 != null) System.out.println(dato2.getPlanta()+" - "+dato2.getHabitacion()+" - "+dato2.getCama()+"\n");
-*/
-        Clinica clinica = new Clinica("Pollos", 3);
-        
-        //Clinica clinica2 = new Clinica("Polles", 3);
+
+        Clinica clinica = new Clinica("Pollos", 0);
+       // Clinica clinica2 = new Clinica("Polles", 3);
         System.out.println("Clinica\n");
         System.out.println(clinica.construyePlanta(1, 2));
         System.out.println(clinica.construyePlanta(6, 1)+"\n");
         System.out.println(clinica.construyeHabitacion(1, 1));
         System.out.println(clinica.construyeHabitacion(1, 6));
         System.out.println(clinica.construyeHabitacion(6, 1)+"\n");
-        /*System.out.println(clinica.ingreso(paciente));
+        System.out.println(clinica.ingreso(paciente));
         System.out.println(clinica.ingreso(paciente2)+"\n");
         System.out.println(clinica.alta(paciente));
         System.out.println(clinica.alta(paciente)+"\n");
@@ -80,7 +81,7 @@ public class Practica1 {
         if (dato3 != null) System.out.println(dato3.getPlanta()+" - "+dato3.getHabitacion()+" - "+dato3.getCama()+"\n");
         
         System.out.println(clinica.camasDisponibles());
-        System.out.println(clinica.numeroHabitaciones());*/
+        System.out.println(clinica.numeroHabitaciones());
 
         System.out.println("--HERIDA-- \n"); 
     	Herida herida[] = new Herida[2];
@@ -151,7 +152,34 @@ public class Practica1 {
     		System.out.println("Esta Ingreso "+i+": "+box[i].estaIngresado(herido[1]));
     		System.out.println("Esta Ingreso "+i+": "+box[i].estaIngresado(null));
     	}
-    	
+    	System.out.println("\n --Hospitales-- \n");
+    	Hospital hospital[] = new Hospital[2];
+    	hospital[0] = new Hospital("Quiron", 1, 1, 1, 1);
+    	hospital[1] = new Hospital(null, -1, 0, -1, 0);
+    	for (int i = 0; i<hospital.length; i++){
+    		System.out.println("\n-ITEM "+i+"-");
+    		System.out.println("Ingreso: "+hospital[i].ingreso(herido[0]));
+    		System.out.println("Ingreso: "+hospital[i].ingreso(herido[0]));
+    		System.out.println("Ingreso: "+hospital[i].ingreso(herido[1]));
+    		System.out.println("Ingreso: "+hospital[i].ingreso(herido[1]));
+    		System.out.println("Ingreso: "+hospital[i].ingreso(null));
+    		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(herido[0]));
+    		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(herido[0]));
+    		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(herido[1]));
+    		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(herido[1]));
+    		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(null));
+    		System.out.println("Consulta: "+hospital[i].consulta(herido[0]));
+    		System.out.println("Consulta: "+hospital[i].consulta(herido[1]));
+    		System.out.println("Alta: "+hospital[i].alta(herido[0]));
+    		System.out.println("Alta: "+hospital[i].alta(herido[0]));
+    		System.out.println("Alta: "+hospital[i].alta(herido[1]));
+    		System.out.println("Alta: "+hospital[i].alta(herido[1]));
+    		System.out.println("Alta: "+hospital[i].alta(null));
+    		System.out.println("Consulta: "+hospital[i].consulta(herido[0]));
+    		System.out.println("Consulta: "+hospital[i].consulta(herido[1]));
+    		System.out.println("Consulta: "+hospital[i].consulta(null));
+    		System.out.println("Consulta: "+hospital[i].plazasLibre());
+    	}
     }
     
 }

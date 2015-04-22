@@ -56,4 +56,7 @@ public class Box {
 		if (plazas != null && i<plazas.length && plazas[i] != null) return plazas[i];
 		else return null;
 	}
+	public int getNumero(){
+		return numero;
+	}
 }
