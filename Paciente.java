@@ -117,4 +117,13 @@ public class Paciente {
     public String getDatosIngreso(){
         return datosIngreso;
     }
+    public Clinica getClinicaIngreso(){
+    	return clinicaIngreso;
+    }
+    public void setDatosIngreso(String datos){
+        datosIngreso = datos;
+    }
+    public void setClinicaIngreso(Clinica clinica){
+    	clinicaIngreso = clinica;
+    }
 }

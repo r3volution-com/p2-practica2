@@ -5,7 +5,7 @@
  */
 
 
-//import java.util.Arrays;
+import java.util.Arrays;
 
 /**
  *
@@ -83,13 +83,25 @@ public class Practica1 {
         System.out.println(clinica.camasDisponibles());
         System.out.println(clinica.numeroHabitaciones());
 
-        System.out.println("--HERIDA-- \n"); 
+        System.out.println("--CONSTRUCTORES--");
+
     	Herida herida[] = new Herida[2];
+    	Herida herida2[] = new Herida[5];
+    	Hospital hospital[] = new Hospital[2];
+    	Herido herido[] = new Herido[3];
+    	Box box[] = new Box[3];
     	herida[0] = new Herida("Hematoma", 5);
     	herida[1] = new Herida(null, -2);
-    	Herida herida2[] = new Herida[5];
     	herida2[0] = new Herida("Derrame cerebral", 8);
     	herida2[1] = new Herida(null, -1);
+    	box[0] = new Box(0, 1);
+    	box[1] = new Box(1, 0);
+    	box[2] = new Box(2, -1);
+    	hospital[0] = new Hospital("Quiron", 1, 1, 1, 1);
+    	hospital[1] = new Hospital(null, -1, 0, -1, 0);
+    	herido[0] = new Herido("Pepe", 5, herida);
+    	herido[1] = new Herido("Paco", 3, herida2);
+        System.out.println("--HERIDA-- \n"); 
     	for (int i = 0; i<herida.length; i++){
     		System.out.println("\n-ITEM "+i+"-");
 	    	System.out.println("Lesion original: "+herida[i].getGravedad());
@@ -100,9 +112,6 @@ public class Practica1 {
 	    	System.out.println(herida[i].getLesion());
     	}
     	System.out.println("\n --HERIDO-- \n");
-    	Herido herido[] = new Herido[3];
-    	herido[0] = new Herido("Pepe", 5, herida);
-    	herido[1] = new Herido("Paco", 3, herida2);
     	//System.out.println(herido[1].ingreso(clinica));
     	herido[2] = new Herido(null, -3, null);
     	for (int i = 0; i<herido.length; i++){
@@ -125,12 +134,14 @@ public class Practica1 {
     		System.out.println("Cura: "+herido[i].cura("Cancer")); //Revisar
     		System.out.println("Cura: "+herido[i].cura(null)); //Revisar
     		System.out.println(herido[i].altaVoluntaria());
+    		herido[i].altaMedica(hospital[0]);
+    		herido[i].altaMedica(hospital[1]);
+    		herido[i].confirmacion(hospital[0]);
+    		herido[i].confirmacion(hospital[1]);
+    		System.out.println("Consulta: "+herido[i].consulta(hospital[0])); //Revisar 
+    		System.out.println("Consulta: "+herido[i].consulta(hospital[1])); //Revisar
     	}
     	System.out.println("\n --Box-- \n");
-    	Box box[] = new Box[3];
-    	box[0] = new Box(0, 1);
-    	box[1] = new Box(1, 0);
-    	box[2] = new Box(2, -1);
     	for (int i = 0; i<box.length; i++){
     		System.out.println("\n-ITEM "+i+"-");
     		System.out.println("Disponible: "+box[i].disponible());
@@ -153,9 +164,6 @@ public class Practica1 {
     		System.out.println("Esta Ingreso "+i+": "+box[i].estaIngresado(null));
     	}
     	System.out.println("\n --Hospitales-- \n");
-    	Hospital hospital[] = new Hospital[2];
-    	hospital[0] = new Hospital("Quiron", 1, 1, 1, 1);
-    	hospital[1] = new Hospital(null, -1, 0, -1, 0);
     	for (int i = 0; i<hospital.length; i++){
     		System.out.println("\n-ITEM "+i+"-");
     		System.out.println("Ingreso: "+hospital[i].ingreso(herido[0]));
@@ -173,7 +181,7 @@ public class Practica1 {
     		System.out.println("Alta: "+hospital[i].alta(herido[0]));
     		System.out.println("Alta: "+hospital[i].alta(herido[0]));
     		System.out.println("Alta: "+hospital[i].alta(herido[1]));
-    		System.out.println("Alta: "+hospital[i].alta(herido[1]));
+    		System.out.println("Alta: "+hospital[i].alta(herido[2]));
     		System.out.println("Alta: "+hospital[i].alta(null));
     		System.out.println("Consulta: "+hospital[i].consulta(herido[0]));
     		System.out.println("Consulta: "+hospital[i].consulta(herido[1]));

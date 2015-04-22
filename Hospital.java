@@ -9,9 +9,10 @@ public class Hospital extends Clinica {
 			if (nBoxes <= 0) nBoxes = 3;
 			if (nPlazas <= 0) nPlazas = 3;
 			for (int i=0;i<nPlantas;i++){
-				super.construyePlanta(nPlantas, nHabitaciones);
+				super.construyePlanta(i, nHabitaciones);
 				for (int j=0;j<nHabitaciones;j++){
 					super.construyeHabitacion(j, i);
+					//System.out.println(super.numeroHabitaciones());
 				}
 			}
 			boxes = new Box[nBoxes];
@@ -32,16 +33,21 @@ public class Hospital extends Clinica {
 				if (disponible != -1) {
 					if (boxes[disponible].estaIngresado(h) == -1 && boxes[disponible].ingreso(h) != -1){
 						h.confirmacion(this);
+						//System.out.println("1");
 						return true;
 					} else return false;
 				} else {
-					if (super.ingreso(p))
-					return true;
+					//System.out.println("2");
+					if (super.ingreso(p)){
+						return true;
+					}
 					else return false;
 				}
 			} else {
-				if (super.ingreso(p))
-				return true;
+				//System.out.println("3");
+				if (super.ingreso(p)){
+					return true;
+				}
 				else return false;
 			}
 		} else return false;
@@ -61,25 +67,31 @@ public class Hospital extends Clinica {
 				} else return false;
 			} else {
 				for(int i = 0; i<boxes.length;i++){
-					for (int j=0;j<boxes[i].plazas();j++){
-						/*sumatorio=0;
-						for (int k=0;k<boxes[i].visita(j).getLesiones().length;k++){
-							sumatorio+=boxes[i].visita(j).getLesiones()[k].getGravedad();
-						}*/
-						if (boxes[i] != null && boxes[i].visita(j) != null && menorgravedad > boxes[i].visita(j).gravedad()){
-							menorgravedad=boxes[i].visita(j).gravedad();
-							idmgi=i;
-							idmgj=j;
+					if (boxes[i] != null){
+						for (int j=0;j<boxes[i].plazas();j++){
+							/*sumatorio=0;
+							for (int k=0;k<boxes[i].visita(j).getLesiones().length;k++){
+								sumatorio+=boxes[i].visita(j).getLesiones()[k].getGravedad();
+							}*/
+							if (boxes[i].visita(j) != null && menorgravedad > boxes[i].visita(j).gravedad()){
+								menorgravedad=boxes[i].visita(j).gravedad();
+								idmgi=i;
+								idmgj=j;
+							}
 						}
 					}
 				}
-				if (menorgravedad<p.gravedad()){
+				//System.out.println("JE "+menorgravedad+" "+p.gravedad());
+				if (menorgravedad>p.gravedad()){
 					Herido po = boxes[idmgi].visita(idmgj);
-					if(boxes[disponible].estaIngresado(p) != -1 && boxes[idmgi].alta(po)){
-						p.confirmacion(this);
-						return true;
-					}
-					else return false;
+					if(boxes[idmgi].estaIngresado(p) == -1 && boxes[idmgi].estaIngresado(po) != -1){
+						if (boxes[idmgi].alta(po)){
+							if (boxes[idmgi].ingreso(p) != -1){
+								p.confirmacion(this);
+								return true;
+							} else return false;
+						} else return false;
+					} else return false;
 				} else return false;
 			}
 		}else return false;
@@ -90,7 +102,7 @@ public class Hospital extends Clinica {
 				p.altaMedica(this);
 				return true;
 			}else {
-				//Comprobar si es herido?
+				//Comprobar si es enfermo?
 				return false;
 			}
 		} else return false;
@@ -101,7 +113,7 @@ public class Hospital extends Clinica {
 			for (int i=0;i<boxes.length;i++){
 				if(boxes[i].estaIngresado(p) != -1) {
 					dato = new Datos(-1, boxes[i].getNumero(), 0);
-				}else return dato;
+				}else return null;
 			}
 			return dato;
 			
@@ -116,10 +128,18 @@ public class Hospital extends Clinica {
 		}
 		return suma;
 	}
-	/*public boolean traslado(String n, Hospital d){
-		
-	}
 	public boolean traslado(Herido h){
+		if (h != null && boxes != null) {
+			for (int i = super.getPlantas().length-1; i >=0; i--) {
+				if (h.estaIngresado() == false && super.ingresoRapido(i, h)) {
+					h.confirmacion(this);
+					return true;
+				}
+			}
+			return false;
+		} else return false;
+	}
+	/*public boolean traslado(String n, Hospital d){
 		
 	}
 	public double comparaGravedad(){

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 // DNI 77842527 GONZALEZ ALVARADO, MARIO
 
 public class Clinica {
@@ -15,7 +17,9 @@ public class Clinica {
 	//Construye una planta
 	public boolean construyePlanta(int nPlanta, int nHabitaciones){
 		if (nHabitaciones <= 0) nHabitaciones = 2;
+    	//System.out.println("KAS: "+nPlanta+">="+plantas.length);
 		if (plantas == null || nPlanta < 0 || nPlanta >= plantas.length || plantas[nPlanta] != null) return false;
+    	//System.out.println("BLE "+this.plantas.length);
 		plantas[nPlanta] = new Habitacion[nHabitaciones];
 		return true;
 	}
@@ -40,6 +44,19 @@ public class Clinica {
 			}
 		}
 		return false;
+	}
+	public boolean ingresoRapido(int nPlanta, Paciente paciente) {
+		if (nPlanta > 0 && paciente != null && plantas != null && plantas[nPlanta] != null){
+			for (int i = 0; i < plantas[nPlanta].length;i++){
+				if (plantas[nPlanta][i] != null && plantas[nPlanta][i].disponible()){
+					if (plantas[nPlanta][i].ingreso(paciente)) {
+						paciente.confirmacion(this);
+						return true;
+					}
+				}
+			}
+			return false;
+		} else return false;
 	}
 	//Elimina un paciente
 	public boolean alta(Paciente paciente){
@@ -116,5 +133,8 @@ public class Clinica {
 	}
 	public String getNombre(){
 		return nombre;
+	}
+	public Habitacion[][] getPlantas(){
+		return plantas;
 	}
 }

@@ -28,6 +28,7 @@ public class Herido extends Paciente{
 				}
 			}
 			if (presente != -1) {
+				//System.out.println("PENE: "+lesiones[presente].getGravedad());
 				lesiones[presente].agrava();
 				return 0;
 				/*if(lesiones[presente].agrava()){
@@ -60,6 +61,7 @@ public class Herido extends Paciente{
 			for (int i = 0; i<lesiones.length;i++){
 				if (lesiones[i] != null) {
 					arraygravedad[i] = lesiones[i].getGravedad();
+					//System.out.println(lesiones[i].getLesion()+": "+lesiones[i].getGravedad());
 				}
 			}
 			int frecuenciaTemp = 0, frecuenciaModa = 0, moda = -1; 
@@ -155,7 +157,8 @@ public class Herido extends Paciente{
 				if (lesiones[i] != null) todonull = false;
 			}
 			if (todonull== true) {
-				//Hospital.alta?
+				Hospital h = (Hospital) super.getClinicaIngreso();
+				this.altaMedica(h);
 				return true;
 			} else {
 				for (int i = 0; i<lesiones.length;i++){
@@ -167,7 +170,8 @@ public class Herido extends Paciente{
 					else if (ternario[i] == 2) cont2++;
 				}
 				if (cont > cont2){
-					//Alta en hospital
+					Clinica c = super.getClinicaIngreso();
+					super.altaMedica(c);
 					//Actualizar datos? (Creo que se puede usar altaMedica)
 					return true;
 				} else return false;
@@ -175,14 +179,26 @@ public class Herido extends Paciente{
 		} else return false;
 	}
 	public void altaMedica(Hospital h){
-		//Despues de hospital
-	}
-	public boolean consulta(Hospital h){
-		//Despues de hospital
-		return true;
+		if (h!= null && lesiones != null) {
+			Hospital h2 = (Hospital) super.getClinicaIngreso();
+			if (h2 != null && h2.equals(h) && h.estaIngresado(this)){
+				super.altaMedica(h);
+			}
+		}
 	}
 	public void confirmacion(Clinica h){
-		//Referencia a super?
+		if (h!=null && h.estaIngresado(this)){
+			super.setClinicaIngreso(h);
+			super.setDatosIngreso(nombre+";"+h.getNombre());
+		}
+	}
+	public boolean consulta(Hospital h){
+		if (h!=null && super.estaIngresado() == false) {
+			if(h.ingresoUrgente(this)){
+				confirmacion(h);
+				return true;
+			} else return false;
+		} else return false;
 	}
 	public String getNombre(){
 		return nombre;
