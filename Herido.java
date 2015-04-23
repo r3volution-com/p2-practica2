@@ -131,14 +131,14 @@ public class Herido extends Paciente{
 		int suma = 0, resto = 0, cont = 0, cont2=0;
 		char[] ternario;
 		boolean todonull = true;
-		if (lesiones != null) {
+		Hospital h = (Hospital) super.getClinicaIngreso();
+		if (lesiones != null && h != null && (super.estaIngresado() || h.estaIngresado(this))) {
 			for (int i=0;i<lesiones.length;i++) {
 				if (lesiones[i] != null) todonull = false;
 			}
 			if (todonull== true) {
-				Hospital h = (Hospital) super.getClinicaIngreso();
-				this.altaMedica(h);
-				return true;
+				if (h.alta(this)) return true;
+				else return false;
 			} else {
 				for (int i = 0; i<lesiones.length;i++){
 					if (lesiones[i] != null) suma += lesiones[i].getGravedad();
@@ -161,9 +161,10 @@ public class Herido extends Paciente{
 				}
 				if (cont > cont2){
 					Clinica c = super.getClinicaIngreso();
-					super.altaMedica(c);
+					if (c.alta(this)) return true;
+					else return false;
 					//Actualizar datos? (Creo que se puede usar altaMedica)
-					return true;
+					//return true;
 				} else return false;
 			}
 		} else return false;

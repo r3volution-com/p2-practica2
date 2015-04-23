@@ -53,7 +53,7 @@ public class Box {
 		} else return -1;
 	}
 	public Herido visita(int i){
-		if (plazas != null && i<plazas.length && plazas[i] != null) return plazas[i];
+		if (plazas != null && i>=0 && i<plazas.length && plazas[i] != null) return plazas[i];
 		else return null;
 	}
 	public int getNumero(){

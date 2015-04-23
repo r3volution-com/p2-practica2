@@ -18,6 +18,7 @@ public class Hospital extends Clinica {
 			boxes = new Box[nBoxes];
 			for (int j=0;j<nBoxes;j++){
 				boxes[j]= new Box(j, nPlazas);
+				//System.out.println("PLA: "+nPlazas);
 			}
 		}
 		
@@ -33,7 +34,7 @@ public class Hospital extends Clinica {
 				if (disponible != -1) {
 					if (boxes[disponible].estaIngresado(h) == -1 && boxes[disponible].ingreso(h) != -1){
 						h.confirmacion(this);
-						//System.out.println("1");
+						//System.out.println("1 attack"+boxes[disponible].plazas());
 						return true;
 					} else return false;
 				} else {
@@ -130,6 +131,17 @@ public class Hospital extends Clinica {
 		}
 		return suma;
 	}
+	public boolean estaIngresado(Herido herido){
+		if (boxes == null || herido == null) return false;
+		for (int i = 0; i<boxes.length;i++){
+			if (boxes[i] != null){
+				if (boxes[i].estaIngresado(herido) != -1){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	public boolean traslado(Herido h){
 		if (h != null && boxes != null) {
 			for (int i = super.getPlantas().length-1; i >=0; i--) {
@@ -193,14 +205,65 @@ public class Hospital extends Clinica {
 		} else return 0;
 	}
 	public double gravedadMedia() {
-		double media= 0, suma = 0, contador = 0;
-		//for (int i = 0; i<)
-		return 0.0;
+		double media= 0.0, suma = 0, contador = 0;
+		if (boxes != null){
+			for (int i = 0; i<boxes.length; i++){
+				if (boxes[i] != null){
+					for (int j = 0; j<boxes[i].plazas();j++){
+						//System.out.println(boxes[i].visita(j));
+						if (boxes[i].visita(j) != null){
+							suma += boxes[i].visita(j).gravedad();
+							//System.out.println(boxes[i].visita(j).getNombre());
+							contador++;
+						}
+						//System.out.println(i+" je "+j);
+					}
+				}
+			}
+			media = suma/contador;
+		}
+		return media;
 	}
-	/*public double coeficienteCurtosis(){
-		
+	public double sumatorio(int potencia){
+		double suma = 0.0;
+		if (boxes != null){
+			for (int i = 0; i<boxes.length; i++){
+				if (boxes[i] != null){
+					for (int j = 0; j<boxes[i].plazas();j++){
+						if (boxes[i].visita(j) != null){
+							suma += Math.pow((boxes[i].visita(j).gravedad()-gravedadMedia()), potencia);
+						}
+					}
+				}
+			}
+		}
+		return suma;
+	}
+	public int contador(){
+		int contador = 0;
+		if (boxes != null){
+			for (int i = 0; i<boxes.length; i++){
+				if (boxes[i] != null){
+					for (int j = 0; j<boxes[i].plazas();j++){
+						if (boxes[i].visita(j) != null){
+							contador ++;
+						}
+					}
+				}
+			}
+		}
+		return contador;
+	}
+	public double coeficienteCurtosis(){
+		if (contador() > 0){
+			double courtois = (sumatorio(4)/(contador()*Math.pow(Math.sqrt((sumatorio(2)/contador())), 4)))-3;
+			return courtois;
+		} else return 0.0;
 	}
 	public double mediaGeometrica(){
-		
-	}*/
+		return 0.0;
+	}
+	public Box[] getBoxes(){
+		return boxes;
+	}
 }

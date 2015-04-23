@@ -125,7 +125,7 @@ public class Practica1 {
     	box[0] = new Box(0, 1);
     	box[1] = new Box(1, 0);
     	box[2] = new Box(2, -1);
-    	hospital[0] = new Hospital("Quiron", 1, 1, 1, 1);
+    	hospital[0] = new Hospital("Quiron", 1, 1, 1, 2);
     	hospital[1] = new Hospital(null, -1, 0, -1, 0);
     	herido[0] = new Herido("Pepe", 5, herida);
     	herido[1] = new Herido("Paco", 3, herida2);
@@ -197,8 +197,22 @@ public class Practica1 {
     		System.out.println("Esta Ingreso "+i+": "+box[i].estaIngresado(null));
     	}
     	System.out.println("\n --Hospitales-- \n");
+    	Box boxes[];
     	for (int i = 0; i<hospital.length; i++){
     		System.out.println("\n-ITEM "+i+"-");
+    		/*System.out.println("I: "+herido[0].getNombre());
+    		boxes = hospital[i].getBoxes();
+    		if (boxes != null){
+    		for (int j=0;j<boxes.length;j++){
+    			if (boxes[j] != null){
+    				for (int j2 = 0; j2 < boxes[j].plazas(); j2++) {
+    					if (boxes[j].visita(j2) != null) System.out.println("GIL: "+boxes[j].visita(j2).getNombre());
+					}
+    			}
+    				
+    		}
+    		}*/
+    		//System.out.println("Ingreso: "+hospital[i].getBoxes());
     		System.out.println("Ingreso: "+hospital[i].ingreso(herido[0]));
     		System.out.println("Ingreso: "+hospital[i].ingreso(herido[0]));
     		System.out.println("Ingreso: "+hospital[i].ingreso(herido[1]));
@@ -209,8 +223,9 @@ public class Practica1 {
     		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(herido[1]));
     		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(herido[1]));
     		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(null));
-    		System.out.println("Consulta: "+hospital[i].consulta(herido[0]));
-    		System.out.println("Consulta: "+hospital[i].consulta(herido[1]));
+    		//System.out.println("[Propio]GravedadMedia: "+hospital[i].gravedadMedia());
+    		//System.out.println("[Propio]Sumatorio: "+hospital[i].sumatorio(4));
+    		System.out.println("coeficienteCursi: "+hospital[i].coeficienteCurtosis());
     		System.out.println("Alta: "+hospital[i].alta(herido[0]));
     		System.out.println("Alta: "+hospital[i].alta(herido[0]));
     		System.out.println("Alta: "+hospital[i].alta(herido[1]));
@@ -219,7 +234,7 @@ public class Practica1 {
     		System.out.println("Consulta: "+hospital[i].consulta(herido[0]));
     		System.out.println("Consulta: "+hospital[i].consulta(herido[1]));
     		System.out.println("Consulta: "+hospital[i].consulta(null));
-    		System.out.println("Consulta: "+hospital[i].plazasLibres());
+    		System.out.println("Plazas Libres: "+hospital[i].plazasLibres());
     	}
     }
     
