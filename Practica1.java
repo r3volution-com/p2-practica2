@@ -129,6 +129,7 @@ public class Practica1 {
     	hospital[1] = new Hospital(null, -1, 0, -1, 0);
     	herido[0] = new Herido("Pepe", 5, herida);
     	herido[1] = new Herido("Paco", 3, herida2);
+    	herido[2] = new Herido(null, -3, null);
         System.out.println("--HERIDA-- \n"); 
     	for (int i = 0; i<herida.length; i++){
     		System.out.println("\n-ITEM "+i+"-");
@@ -141,7 +142,6 @@ public class Practica1 {
     	}
     	System.out.println("\n --HERIDO-- \n");
     	//System.out.println(herido[1].ingreso(clinica));
-    	herido[2] = new Herido(null, -3, null);
     	for (int i = 0; i<herido.length; i++){
     		System.out.println("\n-ITEM "+i+"-");
 	    	//if (herido[i].getLesiones()!=null)System.out.println("Lesion: "+herido[i].getLesiones()[0].getLesion()+" "+herido[i].getLesiones()[0].getGravedad());

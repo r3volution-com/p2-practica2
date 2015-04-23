@@ -58,10 +58,11 @@ public class Hospital extends Clinica {
 		//int sumatorio = 0;
 		if (boxes != null && p != null){
 			for (int i = 0; i<boxes.length && disponible == -1;i++){
-				if (boxes[i] == null) disponible = i;
+				if (boxes[i] != null && boxes[i].disponible() >0) disponible = i;
 			}
 			if (disponible != -1) {
-				if (boxes[disponible].estaIngresado(p) != -1 && boxes[disponible].ingreso(p) != -1){
+				if (boxes[disponible] != null && boxes[disponible].estaIngresado(p) == -1 && boxes[disponible].ingreso(p) != -1){
+
 					p.confirmacion(this);
 					return true;
 				} else return false;
@@ -86,6 +87,7 @@ public class Hospital extends Clinica {
 					Herido po = boxes[idmgi].visita(idmgj);
 					if(boxes[idmgi].estaIngresado(p) == -1 && boxes[idmgi].estaIngresado(po) != -1){
 						if (boxes[idmgi].alta(po)){
+							po.altaMedica(this);
 							if (boxes[idmgi].ingreso(p) != -1){
 								p.confirmacion(this);
 								return true;
@@ -189,6 +191,11 @@ public class Hospital extends Clinica {
 			} else
 			return 0;
 		} else return 0;
+	}
+	public double gravedadMedia() {
+		double media= 0, suma = 0, contador = 0;
+		//for (int i = 0; i<)
+		return 0.0;
 	}
 	/*public double coeficienteCurtosis(){
 		

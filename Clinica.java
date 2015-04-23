@@ -31,7 +31,8 @@ public class Clinica {
 	}
 	//Anade un paciente
 	public boolean ingreso(Paciente paciente){
-		if (plantas == null) return false;
+		if (plantas == null || paciente == null) return false;
+		if (paciente.estaIngresado()) return false;
 		for (int i = 0; i<plantas.length;i++){
 			if (plantas[i] != null){
 				for (int j = 0; j<plantas[i].length; j++){
@@ -60,7 +61,7 @@ public class Clinica {
 	}
 	//Elimina un paciente
 	public boolean alta(Paciente paciente){
-		if (plantas == null) return false;
+		if (plantas == null || paciente == null) return false;
 		for (int i = 0; i<plantas.length;i++){
 			if (plantas[i] != null){
 				for (int j = 0; j<plantas[i].length; j++){
@@ -76,7 +77,7 @@ public class Clinica {
 	}
 	//Comprueba si esta ingresado
 	public boolean estaIngresado(Paciente paciente){
-		if (plantas == null) return false;
+		if (plantas == null || paciente == null || paciente.estaIngresado() == false) return false;
 		for (int i = 0; i<plantas.length;i++){
 			if (plantas[i] != null){
 				for (int j = 0; j<plantas[i].length; j++){
@@ -89,8 +90,7 @@ public class Clinica {
 		return false;
 	}
 	public Datos consulta(Paciente paciente) {
-		Datos datos = null;
-		if (plantas == null) return datos;
+		if (plantas == null || paciente == null) return null;
 		for (int i = 0; i<plantas.length;i++){
 			if (plantas[i] != null){
 				for (int j = 0; j<plantas[i].length; j++){
@@ -100,7 +100,7 @@ public class Clinica {
 				}
 			}
 		}
-		return datos;
+		return null;
 	}
 	//Dice las camas disponibles
 	public int camasDisponibles() {

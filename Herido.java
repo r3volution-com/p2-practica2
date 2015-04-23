@@ -8,7 +8,9 @@ public class Herido extends Paciente{
 			this.nombre = nombre;
 			this.lesiones = new Herida[lesiones.length];
 			for (int i=0;i<lesiones.length;i++){
-				this.lesiones[i]=lesiones[i];
+				if (lesiones[i] != null){
+					this.lesiones[i]= new Herida(lesiones[i].getLesion(), lesiones[i].getGravedad());
+				}
 			}
 			//this.lesiones = lesiones;
 		}
@@ -75,6 +77,7 @@ public class Herido extends Paciente{
 	            if(frecuenciaTemp > frecuenciaModa){
 	                frecuenciaModa = frecuenciaTemp;
 	                moda = arraygravedad[i];
+	                //System.out.println("Cosa: "+i);
 	            }
 	        }
 			return moda;
@@ -182,6 +185,7 @@ public class Herido extends Paciente{
 	public boolean consulta(Hospital h){
 		if (h!=null && super.estaIngresado() == false) {
 			if(h.ingresoUrgente(this)){
+				//System.out.println("Ble");
 				confirmacion(h);
 				return true;
 			} else return false;
