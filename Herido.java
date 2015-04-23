@@ -23,7 +23,7 @@ public class Herido extends Paciente{
 					if (l.getLesion() != null){
 						 if(lesiones[i].getLesion() != null && lesiones[i].getLesion().equalsIgnoreCase(l.getLesion())) presente = i;
 					} else {
-						/*if (lesiones[i].getGravedad() == l.getGravedad()) */presente = i;
+						if (lesiones[i].getLesion() == null) presente = i;
 					}
 				}
 			}
@@ -94,10 +94,14 @@ public class Herido extends Paciente{
 	}
 	public String cura(String s){
 		int pos = -1;
-		if (lesiones != null && s != null){
+		if (lesiones != null){
 			for (int i = 0; i<lesiones.length && pos < 0;i++){
 				if (lesiones[i] != null) {
-					if (lesiones[i].getLesion() != null && lesiones[i].getLesion().equalsIgnoreCase(s)) pos = i;
+					if (lesiones[i].getLesion() != null) {
+						 if(lesiones[i].getLesion().equalsIgnoreCase(s)) pos = i;
+					} else {
+						 if(s == null) pos = i;
+					}
 				}
 			}
 			if (pos >= 0) {
@@ -120,36 +124,8 @@ public class Herido extends Paciente{
 			}
 		} else return "";
 	}
-	private static void invertirArray(char a[],int n){ 
-		int j=n-1,i; 
-		char aux; 
-		for(i=0;i<=(n-1)/2;i++){ 
-			aux=a[j]; 
-			a[j]=a[i]; 
-			a[i]=aux; 
-			j--; 
-		} 
-	} 
-	private char[] convertirABase3(int terna) {
-		int c=0,act=0; 
-		char dec[]; 
-		dec=new char[100]; 
-		do{ 
-			act=terna%3; 
-			terna=terna/3; 
-			switch(act){ 
-				case 0: dec[c]='0';break; 
-				case 1: dec[c]='1';break; 
-				case 2: dec[c]='2';break; 
-			}	
-			c++; 
-		}while(terna>0); 
-		dec[c]=0; 
-		invertirArray(dec,c);
-		return dec;
-	} 
 	public boolean altaVoluntaria(){
-		int suma = 0, cont = 0, cont2=0;
+		int suma = 0, resto = 0, cont = 0, cont2=0;
 		char[] ternario;
 		boolean todonull = true;
 		if (lesiones != null) {
@@ -164,10 +140,21 @@ public class Herido extends Paciente{
 				for (int i = 0; i<lesiones.length;i++){
 					if (lesiones[i] != null) suma += lesiones[i].getGravedad();
 				}
-				ternario = convertirABase3(suma);
-				for (int i = 0; i<ternario.length;i++){
-					if (ternario[i] == 0 || ternario[i] == 1) cont++;
-					else if (ternario[i] == 2) cont2++;
+				//System.out.println("Suma: "+suma);
+				while (suma > 0){
+					resto = suma % 3;
+					switch(resto) {
+						case 0:
+							cont++;
+							break;
+						case 1:
+							cont++;
+							break;
+						case 2:
+							cont2++;
+							break;
+					}
+					suma = suma / 3;
 				}
 				if (cont > cont2){
 					Clinica c = super.getClinicaIngreso();

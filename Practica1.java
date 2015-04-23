@@ -17,6 +17,34 @@ public class Practica1 {
 		for (int i = 0; i < heridas.length; i++) if (heridas[i] != null) System.out.println(heridas[i].getLesion());
 		//return pepe;
 	}
+	private static void invertirArray(char a[],int n){ 
+		int j=n-1,i; 
+		char aux; 
+		for(i=0;i<=(n-1)/2;i++){ 
+			aux=a[j]; 
+			a[j]=a[i]; 
+			a[i]=aux; 
+			j--; 
+		} 
+	} 
+	private char[] convertirABase3(int terna) {
+		int c=0,act=0; 
+		char dec[]; 
+		dec=new char[100]; 
+		do{ 
+			act=terna%3; 
+			terna=terna/3; 
+			switch(act){ 
+				case 0: dec[c]='0';break; 
+				case 1: dec[c]='1';break; 
+				case 2: dec[c]='2';break; 
+			}	
+			c++; 
+		}while(terna>0); 
+		dec[c]=0; 
+		invertirArray(dec,c);
+		return dec;
+	} 
     /**
      * @param args the command line arguments
      */
@@ -116,10 +144,15 @@ public class Practica1 {
     	herido[2] = new Herido(null, -3, null);
     	for (int i = 0; i<herido.length; i++){
     		System.out.println("\n-ITEM "+i+"-");
+	    	//if (herido[i].getLesiones()!=null)System.out.println("Lesion: "+herido[i].getLesiones()[0].getLesion()+" "+herido[i].getLesiones()[0].getGravedad());
     		System.out.println(herido[i].agregaLesion(herida[0]));
+	    	//if (herido[i].getLesiones()!=null)System.out.println("Lesion: "+herido[i].getLesiones()[0].getLesion()+" "+herido[i].getLesiones()[0].getGravedad());
     		System.out.println(herido[i].agregaLesion(herida[1]));
+	    	//if (herido[i].getLesiones()!=null)System.out.println("Lesion: "+herido[i].getLesiones()[0].getLesion()+" "+herido[i].getLesiones()[0].getGravedad());
     		System.out.println(herido[i].agregaLesion(herida2[0]));
+	    	//if (herido[i].getLesiones()!=null)System.out.println("Lesion: "+herido[i].getLesiones()[0].getLesion()+" "+herido[i].getLesiones()[0].getGravedad());
     		System.out.println(herido[i].agregaLesion(herida2[1]));
+	    	//if (herido[i].getLesiones()!=null)System.out.println("Lesion: "+herido[i].getLesiones()[0].getLesion()+" "+herido[i].getLesiones()[0].getGravedad());
     		System.out.println(herido[i].agregaLesion(null));
     		if (herido[i].getLesiones() != null) System.out.println("Tam: "+herido[i].getLesiones().length);
     		herido[i].empeora(0);
@@ -133,7 +166,7 @@ public class Practica1 {
     		System.out.println("Cura: "+herido[i].cura("Derrame cerebral")); //Revisar
     		System.out.println("Cura: "+herido[i].cura("Cancer")); //Revisar
     		System.out.println("Cura: "+herido[i].cura(null)); //Revisar
-    		System.out.println(herido[i].altaVoluntaria());
+    		System.out.println("Alta voluntaria: "+herido[i].altaVoluntaria());
     		herido[i].altaMedica(hospital[0]);
     		herido[i].altaMedica(hospital[1]);
     		herido[i].confirmacion(hospital[0]);
@@ -186,7 +219,7 @@ public class Practica1 {
     		System.out.println("Consulta: "+hospital[i].consulta(herido[0]));
     		System.out.println("Consulta: "+hospital[i].consulta(herido[1]));
     		System.out.println("Consulta: "+hospital[i].consulta(null));
-    		System.out.println("Consulta: "+hospital[i].plazasLibre());
+    		System.out.println("Consulta: "+hospital[i].plazasLibres());
     	}
     }
     

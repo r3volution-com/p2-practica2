@@ -119,7 +119,7 @@ public class Hospital extends Clinica {
 			
 		} else return null;
 	}
-	public int plazasLibre() {
+	public int plazasLibres() {
 		int suma=0;
 		if (boxes!=null){
 			for (int i=0;i<boxes.length;i++){
@@ -139,13 +139,58 @@ public class Hospital extends Clinica {
 			return false;
 		} else return false;
 	}
-	/*public boolean traslado(String n, Hospital d){
-		
+	public boolean traslado(String n, Hospital d){
+		if (d != null && boxes != null && n != null) {
+			boolean tipo = false;
+			Herido h = null;
+			for (int i=0; i<boxes.length;i++){
+				if (boxes[i] != null){
+					for (int j=0;j<boxes[i].plazas() && tipo == false;j++){
+						if (boxes[i].visita(j) != null && boxes[i].visita(j).getNombre() != null){
+							if (boxes[i].visita(j).getNombre().equalsIgnoreCase(n)){
+								h=boxes[i].visita(j);
+								if (boxes[i].alta(h)){
+									tipo = true;
+									h.altaMedica(this);
+								}
+							}
+						}
+					}
+				}
+			}
+			if (tipo == true) {
+				if (d.traslado(h))return true;
+				else {
+					if (this.ingreso(h)) return true;
+					else return false;
+				}
+			} else return false;
+		} else return false;
 	}
 	public double comparaGravedad(){
-		
+		double max = 0, min = 9;
+		double gravedad = 0;
+		if (boxes != null){
+			for (int i=0;i<boxes.length;i++){
+				if (boxes[i]!=null){
+					for (int j=0; i<boxes[i].plazas();j++){
+						if (boxes[i].visita(j).gravedad()>max){
+							max=boxes[i].visita(j).gravedad();
+						}
+						if (boxes[i].visita(j).gravedad()<min){
+							min=boxes[i].visita(j).gravedad();
+						}
+					}
+				}
+			}
+			if (min!=0 && max != 0){
+				gravedad = max/min;
+				return gravedad;
+			} else
+			return 0;
+		} else return 0;
 	}
-	public double coeficienteCurtosis(){
+	/*public double coeficienteCurtosis(){
 		
 	}
 	public double mediaGeometrica(){
