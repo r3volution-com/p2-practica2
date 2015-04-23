@@ -171,8 +171,8 @@ public class Practica1 {
     		herido[i].altaMedica(hospital[1]);
     		herido[i].confirmacion(hospital[0]);
     		herido[i].confirmacion(hospital[1]);
-    		System.out.println("Consulta: "+herido[i].consulta(hospital[0])); //Revisar 
-    		System.out.println("Consulta: "+herido[i].consulta(hospital[1])); //Revisar
+    		//System.out.println("Consulta: "+herido[i].consulta(hospital[0])); //Revisar 
+    		//System.out.println("Consulta: "+herido[i].consulta(hospital[1])); //Revisar
     	}
     	System.out.println("\n --Box-- \n");
     	for (int i = 0; i<box.length; i++){
@@ -215,8 +215,8 @@ public class Practica1 {
     		//System.out.println("Ingreso: "+hospital[i].getBoxes());
     		System.out.println("Ingreso: "+hospital[i].ingreso(herido[0]));
     		System.out.println("Ingreso: "+hospital[i].ingreso(herido[0]));
-    		System.out.println("Ingreso: "+hospital[i].ingreso(herido[1]));
-    		System.out.println("Ingreso: "+hospital[i].ingreso(herido[1]));
+    		//System.out.println("Ingreso: "+hospital[i].ingreso(herido[1]));
+    		//System.out.println("Ingreso: "+hospital[i].ingreso(herido[1]));
     		System.out.println("Ingreso: "+hospital[i].ingreso(null));
     		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(herido[0]));
     		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(herido[0]));

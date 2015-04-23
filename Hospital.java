@@ -32,7 +32,7 @@ public class Hospital extends Clinica {
 					if (boxes[i].disponible()>0) disponible = i;
 				}
 				if (disponible != -1) {
-					if (boxes[disponible].estaIngresado(h) == -1 && boxes[disponible].ingreso(h) != -1){
+					if (boxes[disponible].estaIngresado(h) == -1 && p.estaIngresado() == false && boxes[disponible].ingreso(h) != -1){
 						h.confirmacion(this);
 						//System.out.println("1 attack"+boxes[disponible].plazas());
 						return true;
@@ -57,9 +57,10 @@ public class Hospital extends Clinica {
 		int disponible = -1;
 		int menorgravedad = 10, idmgi=0, idmgj=0;
 		//int sumatorio = 0;
-		if (boxes != null && p != null){
+		if (boxes != null && p != null && p.getNombre() != null){
 			for (int i = 0; i<boxes.length && disponible == -1;i++){
 				if (boxes[i] != null && boxes[i].disponible() >0) disponible = i;
+				//if (boxes[i] != null) System.out.println(boxes[i].plazas()+"EYEYE: "+boxes[i].disponible());
 			}
 			if (disponible != -1) {
 				if (boxes[disponible] != null && boxes[disponible].estaIngresado(p) == -1 && boxes[disponible].ingreso(p) != -1){
@@ -71,6 +72,7 @@ public class Hospital extends Clinica {
 				for(int i = 0; i<boxes.length;i++){
 					if (boxes[i] != null){
 						for (int j=0;j<boxes[i].plazas();j++){
+							//if (boxes[i].visita(j) != null) System.out.println("EYEY"+boxes[i].visita(j).getNombre());
 							/*sumatorio=0;
 							for (int k=0;k<boxes[i].visita(j).getLesiones().length;k++){
 								sumatorio+=boxes[i].visita(j).getLesiones()[k].getGravedad();
