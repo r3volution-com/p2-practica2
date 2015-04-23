@@ -162,9 +162,9 @@ Cura:
 
 Cura: null
 
-Alta voluntaria: true
+Alta voluntaria: false
 
-Consulta: false
+Consulta: true
 
 Consulta: false
 
@@ -188,7 +188,7 @@ Tam: 5
 
 Tam: 7
 
-Gravedad: 9
+Gravedad: 5
 
 Paseo: false
 
@@ -204,7 +204,7 @@ Cura: null
 
 Alta voluntaria: false
 
-Consulta: false
+Consulta: true
 
 Consulta: false
 
@@ -368,27 +368,21 @@ Esta Ingreso 2: -1
 
 Ingreso: true
 
-Ingreso: true
+Ingreso: falso
 
-Ingreso: true
-
-Ingreso: false
-
-Ingreso: false
+Ingreso: falso
 
 IngresoUrgente: false
 
 IngresoUrgente: false
 
-IngresoUrgente: false
+IngresoUrgente: true
 
 IngresoUrgente: false
 
 IngresoUrgente: false
 
-Consulta: Datos@11ba3c1f
-
-Consulta: null
+CoeficienteCursi: -2.0
 
 Alta: true
 
@@ -400,13 +394,13 @@ Alta: false
 
 Alta: false
 
-Consulta: Datos@59c12050
-
 Consulta: null
 
 Consulta: null
 
-Consulta: 0
+Consulta: null
+
+Plazas Libres: 0
 
 
 
@@ -418,10 +412,6 @@ Ingreso: false
 
 Ingreso: false
 
-Ingreso: false
-
-Ingreso: false
-
 IngresoUrgente: false
 
 IngresoUrgente: false
@@ -432,9 +422,7 @@ IngresoUrgente: false
 
 IngresoUrgente: false
 
-Consulta: null
-
-Consulta: null
+CoeficienteCursi: -2.0
 
 Alta: false
 
@@ -452,4 +440,4 @@ Consulta: null
 
 Consulta: null
 
-Consulta: 0
+Plazas Libres: 0
