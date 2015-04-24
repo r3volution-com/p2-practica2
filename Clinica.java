@@ -47,7 +47,8 @@ public class Clinica {
 		return false;
 	}
 	public boolean ingresoRapido(int nPlanta, Paciente paciente) {
-		if (nPlanta > 0 && paciente != null && plantas != null && plantas[nPlanta] != null){
+		//System.out.println(nPlanta+" EPE "+plantas.length);
+		if (nPlanta >= 0 && paciente != null &&  nPlanta < plantas.length && plantas != null && plantas[nPlanta] != null){
 			for (int i = 0; i < plantas[nPlanta].length;i++){
 				if (plantas[nPlanta][i] != null && plantas[nPlanta][i].disponible()){
 					if (plantas[nPlanta][i].ingreso(paciente)) {

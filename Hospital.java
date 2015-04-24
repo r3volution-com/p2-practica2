@@ -156,9 +156,9 @@ public class Hospital extends Clinica {
 		return false;
 	}
 	public boolean traslado(Herido h){
-		if (h != null && boxes != null) {
-			for (int i = super.getPlantas().length-1; i >=0; i--) {
-				if (h.estaIngresado() == false && super.ingresoRapido(i, h)) {
+		if (h != null && boxes != null && this.getPlantas() != null && h.estaIngresado() == false) {
+			for (int i = this.getPlantas().length-1; i >=0; i--) {
+				if (super.ingresoRapido(i, h)) {
 					h.confirmacion(this);
 					return true;
 				}
@@ -172,28 +172,25 @@ public class Hospital extends Clinica {
 			Herido h = null;
 			for (int i=0; i<boxes.length;i++){
 				if (boxes[i] != null){
-					for (int j=0;j<boxes[i].plazas() && tipo == false;j++){
+					for (int j=0;j<boxes[i].plazas();j++){
 						if (boxes[i].visita(j) != null && boxes[i].visita(j).getNombre() != null){
 							if (boxes[i].visita(j).getNombre().equalsIgnoreCase(n)){
 								h=boxes[i].visita(j);
 								if (boxes[i].alta(h)){
-									tipo = true;
-									h.altaMedica(this);
+									//h.altaMedica(this);
+									//System.out.println("EJE: "+this.traslado(h));
+									if (this.traslado(h))return true;
+									else {
+										if (boxes[i].ingreso(h) != -1) return false;
+									}
 								}
 							}
 						}
 					}
 				}
 			}
-			if (tipo == true) {
-				if (d.traslado(h))return true;
-				else {
-					//System.out.println("EJEJEJEJEJEJEJE");
-					if (this.ingreso(h)) return true;
-					else return false;
-				}
-			} else return false;
-		} else return false;
+		} 
+		return false;
 	}
 	public double comparaGravedad(){
 		double max = 0, min = 9;
