@@ -1,4 +1,4 @@
-
+// DNI 77842527 GONZALEZ ALVARADO, MARIO
 public class Hospital extends Clinica {
 	private Box[] boxes;
 	public Hospital(String nombre, int nPlantas, int nHabitaciones, int nBoxes, int nPlazas){
@@ -18,7 +18,7 @@ public class Hospital extends Clinica {
 			boxes = new Box[nBoxes];
 			for (int j=0;j<nBoxes;j++){
 				boxes[j]= new Box(j, nPlazas);
-				//System.out.println("PLA: "+nPlazas);
+				//System.out.println("4: "+nPlazas);
 			}
 		}
 		
@@ -34,7 +34,7 @@ public class Hospital extends Clinica {
 				if (disponible != -1) {
 					if (boxes[disponible].estaIngresado(h) == -1 && p.estaIngresado() == false && boxes[disponible].ingreso(h) != -1){
 						h.confirmacion(this);
-						//System.out.println("1 attack"+boxes[disponible].plazas());
+						//System.out.println("1p"+boxes[disponible].plazas());
 						return true;
 					} else return false;
 				} else {
@@ -60,7 +60,7 @@ public class Hospital extends Clinica {
 		if (boxes != null && p != null && p.getNombre() != null){
 			for (int i = 0; i<boxes.length && disponible == -1;i++){
 				if (boxes[i] != null && boxes[i].disponible() >0) disponible = i;
-				//if (boxes[i] != null) System.out.println(boxes[i].plazas()+"EYEYE: "+boxes[i].disponible());
+				//if (boxes[i] != null) System.out.println(boxes[i].plazas()+"a: "+boxes[i].disponible());
 			}
 			if (disponible != -1) {
 				if (boxes[disponible] != null && boxes[disponible].estaIngresado(p) == -1 && boxes[disponible].ingreso(p) != -1){
@@ -72,7 +72,7 @@ public class Hospital extends Clinica {
 				for(int i = 0; i<boxes.length;i++){
 					if (boxes[i] != null){
 						for (int j=0;j<boxes[i].plazas();j++){
-							//if (boxes[i].visita(j) != null) System.out.println("EYEY"+boxes[i].visita(j).getNombre());
+							//if (boxes[i].visita(j) != null) System.out.println("f"+boxes[i].visita(j).getNombre());
 							/*sumatorio=0;
 							for (int k=0;k<boxes[i].visita(j).getLesiones().length;k++){
 								sumatorio+=boxes[i].visita(j).getLesiones()[k].getGravedad();
@@ -85,7 +85,7 @@ public class Hospital extends Clinica {
 						}
 					}
 				}
-				//System.out.println("JE "+menorgravedad+" "+p.gravedad());
+				//System.out.println("b "+menorgravedad+" "+p.gravedad());
 				if (menorgravedad>p.gravedad()){
 					Herido po = boxes[idmgi].visita(idmgj);
 					if(boxes[idmgi].estaIngresado(p) == -1 && boxes[idmgi].estaIngresado(po) != -1){
@@ -178,7 +178,7 @@ public class Hospital extends Clinica {
 								h=boxes[i].visita(j);
 								if (boxes[i].alta(h)){
 									//h.altaMedica(this);
-									//System.out.println("EJE: "+this.traslado(h));
+									//System.out.println("b: "+this.traslado(h));
 									if (this.traslado(h))return true;
 									else {
 										if (boxes[i].ingreso(h) != -1) return false;
@@ -272,6 +272,7 @@ public class Hospital extends Clinica {
 		} else return 0.0;
 	}
 	public double mediaGeometrica(){
+		
 		return 1.0;
 	}
 	public Box[] getBoxes(){

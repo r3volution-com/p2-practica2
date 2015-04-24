@@ -1,4 +1,4 @@
-
+// DNI 77842527 GONZALEZ ALVARADO, MARIO
 public class Box {
 	private int numero;
 	private Herido[] plazas;

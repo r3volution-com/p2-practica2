@@ -87,7 +87,7 @@ public class Paciente {
     }
     //Ingresa un paciente
     public boolean ingreso(Clinica c) { 
-    	//System.out.println("ASDF: "+estimaGravedad());
+    	//System.out.println("1: "+estimaGravedad());
     	if (clinicaIngreso != null && estimaGravedad() > 0){
     		if (c.ingreso(this)) {
     			clinicaIngreso = c;

@@ -1,4 +1,4 @@
-
+// DNI 77842527 GONZALEZ ALVARADO, MARIO
 public class Herida {
 	private String lesion;
 	private int gravedad;

@@ -1,4 +1,4 @@
-
+// DNI 77842527 GONZALEZ ALVARADO, MARIO
 public class Herido extends Paciente{
 	private String nombre;
 	private Herida[] lesiones;
@@ -30,7 +30,7 @@ public class Herido extends Paciente{
 				}
 			}
 			if (presente != -1) {
-				//System.out.println("PENE: "+lesiones[presente].getGravedad());
+				//System.out.println("2: "+lesiones[presente].getGravedad());
 				lesiones[presente].agrava();
 				return 0;
 				/*if(lesiones[presente].agrava()){
@@ -77,7 +77,7 @@ public class Herido extends Paciente{
 	            if(frecuenciaTemp > frecuenciaModa){
 	                frecuenciaModa = frecuenciaTemp;
 	                moda = arraygravedad[i];
-	                //System.out.println("Cosa: "+i);
+	                //System.out.println("2: "+i);
 	            }
 	        }
 			return moda;
