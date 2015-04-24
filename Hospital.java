@@ -104,10 +104,20 @@ public class Hospital extends Clinica {
 	public boolean alta(Paciente p){
 		if (boxes!= null && p != null){
 			if(p.estaIngresado()){
-				p.altaMedica(this);
-				return true;
+				if (super.alta(p)){
+					p.altaMedica(this);
+					return true;
+				} else return false;
 			}else {
-				//Comprobar si es enfermo?
+				for (int i = 0; i < boxes.length; i++){
+					if (boxes[i] != null && boxes[i].estaIngresado((Herido)p) != -1){
+						if (boxes[i].alta((Herido)p)){
+							p.altaMedica(this);
+							return true;
+						}
+					}
+				}
+				//Comprobar si es lesionado?
 				return false;
 			}
 		} else return false;
@@ -116,11 +126,12 @@ public class Hospital extends Clinica {
 		if (boxes!= null && p != null){
 			Datos dato = null;
 			for (int i=0;i<boxes.length;i++){
-				if(boxes[i].estaIngresado(p) != -1) {
-					dato = new Datos(-1, boxes[i].getNumero(), 0);
+				if(boxes[i] != null && boxes[i].estaIngresado(p) != -1) {
+					dato = new Datos(-1, boxes[i].getNumero(), boxes[i].estaIngresado(p));
+					return dato;
 				}else return null;
 			}
-			return dato;
+			return null;
 			
 		} else return null;
 	}
@@ -128,7 +139,7 @@ public class Hospital extends Clinica {
 		int suma=0;
 		if (boxes!=null){
 			for (int i=0;i<boxes.length;i++){
-				suma += boxes[i].disponible();
+				if (boxes[i] != null) suma += boxes[i].disponible();
 			}
 		}
 		return suma;
@@ -177,6 +188,7 @@ public class Hospital extends Clinica {
 			if (tipo == true) {
 				if (d.traslado(h))return true;
 				else {
+					//System.out.println("EJEJEJEJEJEJEJE");
 					if (this.ingreso(h)) return true;
 					else return false;
 				}
@@ -263,7 +275,7 @@ public class Hospital extends Clinica {
 		} else return 0.0;
 	}
 	public double mediaGeometrica(){
-		return 0.0;
+		return 1.0;
 	}
 	public Box[] getBoxes(){
 		return boxes;

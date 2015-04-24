@@ -225,16 +225,23 @@ public class Practica1 {
     		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(null));
     		//System.out.println("[Propio]GravedadMedia: "+hospital[i].gravedadMedia());
     		//System.out.println("[Propio]Sumatorio: "+hospital[i].sumatorio(4));
+    		System.out.println("Consulta: "+hospital[i].consulta(herido[0]));
+    		System.out.println("Consulta: "+hospital[i].consulta(herido[1]));
+    		System.out.println("Consulta: "+hospital[i].consulta(null));
     		System.out.println("coeficienteCursi: "+hospital[i].coeficienteCurtosis());
+    		System.out.println("traslado "+i+": "+hospital[i].traslado("Pepe", hospital[0]));
+    		System.out.println("traslado "+i+": "+hospital[i].traslado("Pepe", hospital[0]));
+    		System.out.println("traslado "+i+": "+hospital[i].traslado("Pepe", hospital[1]));
+    		System.out.println("traslado "+i+": "+hospital[i].traslado("Paco", hospital[0]));
+    		System.out.println("traslado "+i+": "+hospital[i].traslado("Paco", hospital[1]));
+    		System.out.println("traslado "+i+": "+hospital[i].traslado(null, null));
     		System.out.println("Alta: "+hospital[i].alta(herido[0]));
     		System.out.println("Alta: "+hospital[i].alta(herido[0]));
     		System.out.println("Alta: "+hospital[i].alta(herido[1]));
     		System.out.println("Alta: "+hospital[i].alta(herido[2]));
     		System.out.println("Alta: "+hospital[i].alta(null));
-    		System.out.println("Consulta: "+hospital[i].consulta(herido[0]));
-    		System.out.println("Consulta: "+hospital[i].consulta(herido[1]));
-    		System.out.println("Consulta: "+hospital[i].consulta(null));
     		System.out.println("Plazas Libres: "+hospital[i].plazasLibres());
+    		//COMPROBAR TRASLADO
     	}
     }
     
