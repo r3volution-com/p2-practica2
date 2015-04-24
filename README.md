@@ -363,16 +363,13 @@ Esta Ingreso 2: -1
  --Hospitales-- 
 
 
-
-
-
 -ITEM 0-
 
 Ingreso: true
 
-Ingreso: falso
+Ingreso: false
 
-Ingreso: falso
+Ingreso: false
 
 IngresoUrgente: false
 
@@ -384,11 +381,29 @@ IngresoUrgente: false
 
 IngresoUrgente: false
 
-CoeficienteCursi: -2.0
+Consulta: Datos@3abc8690
+
+Consulta: Datos@2f267610
+
+Consulta: null
+
+coeficienteCursi: -2.0
+
+traslado 0: true
+
+traslado 0: true
+
+traslado 0: true
+
+traslado 0: true
+
+traslado 0: true
+
+traslado 0: false
 
 Alta: true
 
-Alta: true
+Alta: false
 
 Alta: true
 
@@ -396,14 +411,7 @@ Alta: false
 
 Alta: false
 
-Consulta: null
-
-Consulta: null
-
-Consulta: null
-
-Plazas Libres: 0
-
+Plazas Libres: 2
 
 
 -ITEM 1-
@@ -424,22 +432,35 @@ IngresoUrgente: false
 
 IngresoUrgente: false
 
-CoeficienteCursi: -2.0
-
-Alta: false
-
-Alta: false
-
-Alta: false
-
-Alta: false
-
-Alta: false
-
 Consulta: null
 
 Consulta: null
 
 Consulta: null
+
+coeficienteCursi: 0.0
+
+traslado 1: false
+
+traslado 1: false
+
+traslado 1: false
+
+traslado 1: false
+
+traslado 1: false
+
+traslado 1: false
+
+Alta: false
+
+Alta: false
+
+Alta: false
+
+Alta: false
+
+Alta: false
 
 Plazas Libres: 0
+
