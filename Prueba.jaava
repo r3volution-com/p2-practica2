@@ -1,0 +1,130 @@
+
+public class Prueba {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Herido herido1,herido2,herido3;
+		Paciente paciente1,paciente2;
+		Herida herida1,herida2,herida3,herida4,herida5,herida6,herida7,heridan;
+		Clinica clinica1,clinica2;
+		Habitacion habitacion1,habitacion2;
+		Hospital hospital1,hospital2,hospital3;
+		Box box1,box2,box3;
+		Datos datos,datos2;
+		hospital1=new Hospital("hospital1",5,3,4,2);
+		herida1=new Herida("hay",5);
+		herida2=new Herida("hayhay",6);
+		herida3=new Herida("hayhayhay",-9);
+		herida4=new Herida("hayhayhayhay",98);
+		herida5=new Herida("hayhayhayhayhay",9);
+		herida6=new Herida("hayhayhayhayhayhay",1);
+		herida7=new Herida("hayhayhayhayhayhayhay",7);
+		heridan=new Herida(null,5);
+		Herida[] Heridas1=new Herida[4];
+		Heridas1[0]=herida1;
+		Heridas1[1]=herida2;
+		Heridas1[2]=herida3;
+		Herida[] Heridas2=new Herida[5];
+		Heridas2[0]=herida3;
+		Heridas2[1]=herida4;
+		Herida[] Heridas3=new Herida[2];
+		herido1=new Herido("herido1",3,Heridas1);
+		herido2=new Herido("herido2",4,Heridas2);
+		herido3=new Herido("herido3",4,null);
+		clinica1=new Clinica("yeeeeee",5);
+		clinica1.construyePlanta(3, 4);
+		clinica1.construyeHabitacion(3, 3);
+		boolean bool=false;
+		//bool=herida1.sana();
+		//bool=clinica1.ingreso(herido1);
+//		System.out.println(bool);
+//		System.out.println(herido2.gravedad());
+//		System.out.println(herido1.cura("hay"));
+//		System.out.println(herido1.cura("Hay"));
+//		System.out.println(herido1.cura("hay"));
+//		System.out.println(herido1.cura("hay"));
+//		System.out.println(herido1.cura("hay"));
+//		System.out.println(herido1.cura("hay"));
+//		System.out.println(herido1.cura("hay"));
+//		System.out.println(herido1.agregaLesion(heridan));		
+//		System.out.println(herido1.cura(null));
+//		System.out.println(herido1.cura(null));
+//		System.out.println(herido1.cura(null));
+//		System.out.println(herido1.cura(null));
+//		System.out.println(herido1.cura(null));System.out.println(herido1.cura(null));
+//		herido1.agregaSintoma("hay");
+//		System.out.println(herido1.cura("hay"));
+//		System.out.println(herido1.cura("hay"));
+//		System.out.println(herido1.agregaLesion(herida1));
+//		System.out.println(herido1.cura("hay"));
+//		System.out.println(herido1.agregaLesion(herida1));
+//		System.out.println(herido1.agregaLesion(herida1));
+//		System.out.println(herido1.agregaLesion(herida1));
+//		System.out.println(herido1.agregaLesion(herida1));
+//		System.out.println(herido1.agregaLesion(herida1));
+//		System.out.println(herido1.agregaLesion(heridan));
+//		System.out.println(herido1.agregaLesion(heridan));
+//		System.out.println(herido1.agregaLesion(heridan));
+//		System.out.println(herido1.agregaLesion(heridan));
+//		System.out.println(herido1.agregaLesion(heridan));
+//		System.out.println(herido1.agregaLesion(heridan));
+//		System.out.println(herido1.agregaLesion(heridan));
+//		System.out.println(herido1.cura("hay"));
+//		System.out.println(herido1.cura(null));
+//		System.out.println(herido1.gravedad());
+//		herido3=new Herido("herido3",4,Heridas3);
+//		System.out.println(herido3.agregaLesion(herida1));
+//		System.out.println(herido3.agregaLesion(herida1));
+//		System.out.println(herido3.agregaLesion(herida2));
+//		herido3.empeora(4);
+//		System.out.println(herido3.agregaLesion(herida3));
+//		System.out.println(herido3.agregaLesion(herida1));
+//		System.out.println(herido3.agregaLesion(herida4));
+//		System.out.println(herido3.agregaLesion(herida5));
+//		System.out.println(herido1.getDatosIngreso());
+//		box1=new Box(3,2);
+//		box2=new Box(3,14);
+//		box3=new Box(2,-4);
+//		System.out.println(box2.plazas());
+//		System.out.println(box2.ingreso(herido3));
+//		System.out.println(box2.ingreso(herido2));
+//		System.out.println(box2.estaIngresado(herido1));
+//		System.out.println(box2.estaIngresado(herido2));
+//		System.out.println(box2.estaIngresado(herido3));
+//		System.out.println(herido2.gravedad());
+//		System.out.println(herido3.gravedad());
+//		System.out.println(box2.cantheridos());
+//		System.out.println(box2.gravedadtot());
+//		System.out.println(box2.disponible());
+//		System.out.println(herido3.getNombre());
+		
+		
+		//PARTE 2
+		
+		
+		hospital1=new Hospital("hospital1",5,3,1,2);
+		hospital2=new Hospital("hospital2",-2,-2,-3,3);
+		System.out.println(hospital2.camasDisponibles());
+		hospital3=new Hospital("hospital3",4,2,4,-3);
+		System.out.println(herido1.gravedad());
+		System.out.println(hospital1.ingreso(herido2));
+		System.out.println(herido2.getDatosIngreso());
+		System.out.println(hospital1.ingreso(herido1));
+		System.out.println(herido1.getDatosIngreso());
+		System.out.println(hospital1.ingresoUrgente(herido2));
+		System.out.println(herido2.getDatosIngreso());
+		//System.out.println(hospital1.cantheridos());
+		//System.out.println(hospital1.cantheridoscama());
+		//System.out.println(hospital1.gravedadmaxima());
+		System.out.println(hospital1.coeficienteCurtosis());
+		//System.out.println(hospital1.alta(herido1));
+		System.out.println(herido1.getDatosIngreso());
+		//System.out.println(hospital1.traslado(herido1));
+		datos=hospital1.consulta(herido1);
+		//System.out.println(datos.getHabitacion());
+		//System.out.println(datos.getPlanta());
+		System.out.println(hospital1.traslado("herido1", hospital2));
+		System.out.println(herido1.getDatosIngreso());
+	}
+
+}

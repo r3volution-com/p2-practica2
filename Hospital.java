@@ -11,7 +11,7 @@ public class Hospital extends Clinica {
 			for (int i=0;i<nPlantas;i++){
 				super.construyePlanta(i, nHabitaciones);
 				for (int j=0;j<nHabitaciones;j++){
-					super.construyeHabitacion(j, i);
+					super.construyeHabitacion(i, j);
 					//System.out.println(super.numeroHabitaciones());
 				}
 			}

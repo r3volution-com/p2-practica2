@@ -172,13 +172,13 @@ public class Herido extends Paciente{
 	public void altaMedica(Hospital h){
 		if (h!= null && lesiones != null) {
 			Hospital h2 = (Hospital) super.getClinicaIngreso();
-			if (h2 != null && h2.equals(h) && h.estaIngresado(this)){
+			if (h2 != null && h2.equals(h)/* && h.estaIngresado(this)*/){
 				super.altaMedica(h);
 			}
 		}
 	}
 	public void confirmacion(Clinica h){
-		if (h!=null && h.estaIngresado(this)){
+		if (h!=null/* && h.estaIngresado(this)*/){
 			super.setClinicaIngreso(h);
 			super.setDatosIngreso(nombre+";"+h.getNombre());
 		}

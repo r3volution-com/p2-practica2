@@ -93,6 +93,7 @@ public class Practica1 {
         Clinica clinica = new Clinica("Pollos", 0);
        // Clinica clinica2 = new Clinica("Polles", 3);
         System.out.println("Clinica\n");
+        clinica.camasDisponibles();
         System.out.println(clinica.construyePlanta(1, 2));
         System.out.println(clinica.construyePlanta(6, 1)+"\n");
         System.out.println(clinica.construyeHabitacion(1, 1));
@@ -223,8 +224,8 @@ public class Practica1 {
     		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(herido[1]));
     		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(herido[1]));
     		System.out.println("IngresoUrgente: "+hospital[i].ingresoUrgente(null));
-    		//System.out.println("[Propio]GravedadMedia: "+hospital[i].gravedadMedia());
-    		//System.out.println("[Propio]Sumatorio: "+hospital[i].sumatorio(4));
+    		System.out.println("[Propio]GravedadMedia: "+hospital[i].gravedadMedia());
+    		System.out.println("[Propio]Sumatorio: "+hospital[i].sumatorio(4));
     		System.out.println("Consulta: "+hospital[i].consulta(herido[0]));
     		System.out.println("Consulta: "+hospital[i].consulta(herido[1]));
     		System.out.println("Consulta: "+hospital[i].consulta(null));

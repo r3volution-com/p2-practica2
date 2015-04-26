@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 // DNI 77842527 GONZALEZ ALVARADO, MARIO
 
 public class Clinica {
@@ -108,11 +106,14 @@ public class Clinica {
 		int cont = 0;
 		if (plantas == null) return cont;
 		for (int i = 0; i<plantas.length;i++){
+			//System.out.println("EY "+i);
 			if (plantas[i] != null){
 				for (int j = 0; j<plantas[i].length; j++){
+					//System.out.println("YE "+j);
 					if (plantas[i][j] != null && plantas[i][j].disponible()){
 						Paciente[] camas = plantas[i][j].getCamas();
 						for (int k = 0; k < camas.length; k++){
+							//System.out.println("Plantas: "+plantas.length+" Habitaciones: "+plantas[i].length+" Camas: "+camas.length);
 							if (camas[k] == null) cont++;
 						}
 					}
